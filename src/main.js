@@ -8,12 +8,11 @@ import App from './app';
 import routes from './routes';
 import storeOption from './store';
 
-/*import ElementUI from 'element-ui';*/
-
 import {Time,Focus} from './directives';
 
 //import {system} from './Config/Config.js';//引入默认配置
 
+import 'mint-ui/lib/style.css'
 
 Vue.use(Vuex);	
 Vue.use(VueRouter);

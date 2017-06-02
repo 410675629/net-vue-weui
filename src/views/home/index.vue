@@ -4,18 +4,6 @@
         
     <span @click="add">{{count}}</span>
     <div>
-    <v-modal :show.sync="showCustomModal" effect="fade" width="400">
-  <div slot="modal-header" class="modal-header">
-    <h4 class="modal-title">
-      <i>Custom</i> <code>Modal</code> <b>Title</b>
-    </h4>
-  </div>
-  <div slot="modal-body" class="modal-body">...</div>
-  <div slot="modal-footer" class="modal-footer">
-    <button type="button" class="btn btn-default" @click="showCustomModal = false">Exit</button>
-    <button type="button" class="btn btn-success" @click="showCustomModal = false">Custom Save</button>
-  </div>
-</v-modal>
 
 
     </div>
@@ -27,7 +15,7 @@
 
 
   import {mapState,mapGetters,mapMutations} from 'vuex';
-  import {affix,alert,modal} from 'vue-strap';
+  import Mint from 'mint-ui';
   /*import Copyright from '../../components/copyright';*/
   export default {
     data () {
@@ -63,6 +51,10 @@
       },
 
       async getContent () {
+        let instance = Mint.Toast('Upload Complete1');
+        setTimeout(() => {
+        instance.close();
+      }, 2000);
         fetch('/api/login').then(response => response.json())
         .then(data =>console.log(data))
         .catch(e => console.log("Oops, error", e))
@@ -80,7 +72,7 @@
     },
 
     components: {
-      'v-modal':modal
+      'v-modal':Mint.modal
     },
 
     computed:{
