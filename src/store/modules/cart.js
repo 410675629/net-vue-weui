@@ -2,10 +2,11 @@ import shop from '../../api/shop.js'
 import * as types from '../mutation-types'
 
 // initial state
-// shape: [{ id, quantity }]
 const state = {
-  added: [],
+
+  newState:'这是一个新状态',
   message:'',
+  count:1000,
   checkoutStatus: null,
   todos: [
       { id: 1, text: '...', done: true },
@@ -13,7 +14,7 @@ const state = {
     ]
 }
 
-// getters
+// getters store 中的 state 中派生出一些状态
 const getters = {
   checkoutStatus: state => state.checkoutStatus,
   doneTodosCount: state => {
@@ -24,8 +25,10 @@ const getters = {
 
 // actions  是处理异步的mutations
 const actions = {
-  // 1最简单的 action 异步处理mutations
-  message (context) {
+  // [1.1]最简单的 action 异步处理mutations
+  // Action 可以包含任意异步操作
+ ADDCOUNT(context) {
+    debugger;
     //调用 context.commit 提交一个 mutation，
     //或者通过 context.state 和 context.getters 
     //来获取 state 和 getters
@@ -34,7 +37,38 @@ const actions = {
     }, 1000)
   },
 
+  INCREMENT (context) {
+    setTimeout(()=>{
+      context.commit('INCREMENT',{count:1})
+    },1000)
+  },
+
+  async ACTIONB ({ commit }) {
+    debugger;
+    commit('gotData')
+  },
+
+  // 使用异步编程
+  actionA ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        debugger;
+        commit('MESSAGE',{count:8888})
+        resolve()
+      }, 1000)
+    })
+  },
+
+
+
+  // [1.2]最简单的 action 异步处理mutations
+  /*message ({commit}) {
+    setTimeout(() => {
+      commit('MESSAGE')
+    }, 1000)
+  },*/
   checkout ({ commit, state }, products) {
+    debugger;
     const savedCartItems = [...state.added]
     commit(types.CHECKOUT_REQUEST)
     shop.buyProducts(
@@ -49,7 +83,13 @@ const actions = {
 const mutations = {
   // 1、 打印页面消息
   [types.MESSAGE] (state,mes){
-    state.message = state.message|| mes;
+    state.message = state.message + mes.count;
+  },
+
+  //增加
+  [types.INCREMENT] (state,payload){
+    debugger;
+    state.count = state.count + payload.count
   },
 
   [types.ADD_TO_CART] (state, { id }) {
@@ -71,15 +111,21 @@ const mutations = {
     state.checkoutStatus = null
   },
 
+
   [types.CHECKOUT_SUCCESS] (state) {
     state.checkoutStatus = 'successful'
   },
-
 
   [types.CHECKOUT_FAILURE] (state, { savedCartItems }) {
     // rollback to the cart saved before sending the request
     state.added = savedCartItems
     state.checkoutStatus = 'failed'
+  },
+
+  [types.gotData] (state){
+
+    debugger;
+    alert('gotData')
   }
 }
 

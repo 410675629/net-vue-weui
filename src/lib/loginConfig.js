@@ -5,6 +5,7 @@ module.exports = {
     promark : 'XRWjxVa',// 组件ID
     host : 'campus.163.com',// 组件所在域名
     single : 0,// 是否只用一个模块，1是，0否
+    width:'240',
     page : 'login',// 首屏
     placeholder : {account:'邮箱帐号或手机号',pwd:'6-16位密码，区分大小写'},
     coverBackground : "background:-webkit-radial-gradient(center,rgba(0,0,0,0.3),#000 75%);",

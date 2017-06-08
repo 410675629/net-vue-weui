@@ -8,3 +8,9 @@ export const cartProducts = state => {
     }
   })
 }
+
+
+export const getShowCon = state => {
+    console.log(state.Tab.showContent[state.Tab.activeIndex]);
+  return state.Tab.showContent[state.Tab.activeIndex];
+}

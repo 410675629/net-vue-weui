@@ -1,8 +1,4 @@
 /**
- * Created by zz on 2017-04-06.
- */
-
-/**
  * 聚焦元素
  */
 export function Focus() {

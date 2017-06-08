@@ -74,11 +74,7 @@
     width:100%;
     color: #2c3e50;
     font-family: Source Sans Pro, Helvetica, sans-serif;
-    a {
-      color: $link-color;
-    }
     .g-body{
-      margin: 65px auto 0;
       width: $body-width;
     }
   }
