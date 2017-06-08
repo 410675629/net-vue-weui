@@ -5,12 +5,17 @@
         <mt-swipe-item>2</mt-swipe-item>
         <mt-swipe-item>3</mt-swipe-item>
       </mt-swipe>
-      <p class="welcome">欢迎使用-{{message}} --{{activeIndex}}</p>      
-       <p class="welcome" :id=this.$store.state.cart.newState>---{{this.$store.state.cart.newState}}---</p>   
-      <span @click="increment">{{count}}</span>
-      <ul @click="__evDelete">
-         <li v-for="item in tableData">{{ item.address}} -- {{item.date}}</li>
-      </ul>
+      <!-- 校招动态-->
+      <mt-campusNews my-title ='校招动态'> </mt-campusNews>
+      
+      <!-- 行程安排-->
+      <mt-schedule my-title ='行程安排'> </mt-schedule>
+
+
+     <!--  <p class="welcome">欢迎使用-{{message}} --{{activeIndex}}</p>      
+      <p class="welcome" :id=this.$store.state.cart.newState>---{{this.$store.state.cart.newState}}---</p>   
+     <span @click="increment">{{count}}</span> -->
+     
       <div class="index-header f-fc">
         <a href="javascript:void(0)" class="fr icons i-user btn-admin" id="btnShowAccountSetting"></a>
         <h1 class="index-logo">
@@ -27,18 +32,18 @@
             </div>
       </div>
     </div>
-
 </template>
 
 <script>
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
   import {CellSwipe,Swipe,SwipeItem,Range,Toast} from 'mint-ui';
-  /*import Copyright from '../../components/copyright';*/
+  import CampusNews from '../campusNews/index.vue';;
+  import Schedule from '../schedule/index.vue';
   export default {
     data () {
     	return {
-         
+       /* stitle:'校招动态'*/
       }
     },
 
@@ -59,13 +64,6 @@
      clickTab(index){
           console.log(index);
           this.$store.commit('CHANGEACTIVE',index);
-      },
-
-
-      __evDelete(){
-        //this.$store.dispatch('deleteItem');
-        this.deleteItem();
-        this.gotData()
       },
 
       gotData(){
@@ -105,6 +103,8 @@
       'mt-swipe-item':SwipeItem,
       'mt-swipe':Swipe,
       'mt-range':Range,
+      'mt-campusNews':CampusNews,
+      'mt-schedule':Schedule
     },
 
     computed:{
@@ -116,13 +116,10 @@
 
       ...mapState({
           count: state => state.cart.count+2,
-          activeIndex: state => state.tab.activeIndex+1,
-          tableData:state=>state.products.tableData
+          activeIndex: state => state.tab.activeIndex+1
       }),
 
-      ...mapActions([
-        'deleteItem'
-      ])
+      
       
     }
   }
@@ -145,11 +142,6 @@
   }
 
 
-  ul li{
-    border-bottom: 1px solid #efefef;
-    height: 1rem;
-    line-height: 1rem;
-  }
 
   .mint-swipe {
       height: 4rem;

@@ -2,7 +2,6 @@
 <!--suppress ALL -->
 <template>
   <div id="app">
-      <router-view name="header"></router-view>
       <router-view class="g-body"></router-view>   
       <router-view name="copyright"></router-view>   
       <remote src="https://webzj.reg.163.com/webapp/javascript/page/json3.js"></remote>

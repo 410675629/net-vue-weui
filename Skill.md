@@ -56,6 +56,30 @@ pushState想要插入一个跨域的网址，导致报错
 参考-》
 http://javascript.ruanyifeng.com/bom/history.html
 
+  <!-- 字符串 -->
+<router-link to="home">Home</router-link>
+<!-- 渲染结果 -->
+<a href="home">Home</a>
+
+<!-- 使用 v-bind 的 JS 表达式 -->
+<router-link v-bind:to="'home'">Home</router-link>
+
+<!-- 不写 v-bind 也可以，就像绑定别的属性一样 -->
+<router-link :to="'home'">Home</router-link>
+
+<!-- 同上 -->
+<router-link :to="{ path: 'home' }">Home</router-link>
+
+<!-- 命名的路由 -->
+/user/123
+<router-link :to="{ name: 'user', params: { userId: 123 }}">User</router-link>
+
+
+<!-- 带查询参数，下面的结果为 /register?plan=private -->
+<router-link :to="{ path: 'register', query: { plan: 'private' }}">Register</router-link>
+
+
+
 ## 6 ELEMENT 按需引入
 
 借助 babel-plugin-component，我们可以只引入需要的组件，以达到减小项目体积的目的。

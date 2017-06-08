@@ -1,7 +1,9 @@
 
 <template>
 	<div class="m-recommend">
-		校园招聘
+
+
+		校园招聘 XIANGQING {{ $route.params.id }}
 	</div>
 </template>
 

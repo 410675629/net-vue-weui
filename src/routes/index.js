@@ -4,10 +4,12 @@
  */
 const Hello = r => require(['views/hello'], r);
 const Index = r => require(['views/home/index'], r);   /*首页*/
+const CampusNews = r => require(['views/campusNews'], r);   /*版权*/
 const Copyright = r => require(['views/copyright'], r);   /*版权*/
 const Header = r => require(['views/header'], r);   /*头部*/
 
-const Campus= r => require(['views/campus/index'], r);   /*校园招聘*/
+const schedule= r => require(['views/campus/index'], r);   /*校园招聘*/
+
 const Netease= r => require(['views/Netease/index'], r);   /*关于网易*/
 
 const NotFound = r => require(['views/notfound'], r);
@@ -30,7 +32,7 @@ const routes = [{
 	        copyright: Copyright // 页面尾部
 	      },
 		name: 'home'
-	}, /*{
+	},/*{
 		path: 'campus', //  校园招聘
 		components: {
 	        default: Recommend,
@@ -43,13 +45,11 @@ const routes = [{
 			component: Detail
 		}]
 	},*/{
-		path: '/Campus',  /*校园招聘*/
+		path: '/schedule/:id',  /*校园招聘*/
 		components: {
-	        default: Campus,
-	        header: Header,
-	        copyright: Copyright
+	        default:schedule
 	      },
-		name: 'campus'
+		name: 'schedule'
 	},{
 		path: '/Netease',  /*关于网易*/
 		components: {

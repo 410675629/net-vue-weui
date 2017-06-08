@@ -1,8 +1,6 @@
 
 <template>
   <div class="g-ft f-tac f-m">
-
-
       <p v-time></p>
       ©1997-{{nowYear}}网易公司版权所有
   </div>

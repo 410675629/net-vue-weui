@@ -1,8 +1,6 @@
 
 <template>
-	<div class="g-hd">
-		
-	</div>
+	<mt-search/>	
 </template>
 
 <script>
