@@ -13,6 +13,10 @@ const schedule= r => require(['views/campus/index'], r);   /*校园招聘*/
 const Netease= r => require(['views/Netease/index'], r);   /*关于网易*/
 
 const NotFound = r => require(['views/notfound'], r);
+const HomePage = r => require(['views/homePage'], r);
+
+
+
 
 
 // 根目录
@@ -25,11 +29,9 @@ const routes = [{
 			name:'home' //重定向到首页 
 		}
 	}, {
-		path: '/index',  // 主页
+		path: '/homePage',  // 主页
 		components: {
-	        default: Index,      // 内容区域
-	        header: Header,      // 头部
-	        copyright: Copyright // 页面尾部
+	        default: HomePage,      // 内容区域
 	      },
 		name: 'home'
 	},/*{

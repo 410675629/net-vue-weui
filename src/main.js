@@ -18,15 +18,18 @@ Vue.use(Vuex);
 Vue.use(VueRouter);
 /*Vue.use(ElementUI)
 */
+
 // 注册一个全局自定义指令 v-focus
 Vue.directive('focus',Focus())
 Vue.directive('time',Time())
+
 
 // 创建一个路由对象用于管理页面的路由
 const router = new VueRouter({
   mode: 'history',
   routes: routes
 });
+
 
 // 创建一个 store 对象用于管理应用状态
 const store = new Vuex.Store(storeOption);

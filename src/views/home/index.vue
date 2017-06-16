@@ -6,7 +6,7 @@
         <mt-swipe-item>3</mt-swipe-item>
       </mt-swipe>
       <!-- 校招动态-->
-      <mt-campusNews my-title ='校招动态'> </mt-campusNews>
+      <mt-campusNews my-title ='校招动1态'> </mt-campusNews>
       
       <!-- 行程安排-->
       <mt-schedule my-title ='行程安排'> </mt-schedule>
@@ -80,12 +80,13 @@
             duration: 5000
           });
         setTimeout(() => {
-        instance.close();
-      }, 2000);
+          instance.close();
+        }, 2000);
+        
         fetch('/api/login').then(response => response.json())
-        .then(data =>console.log(data))
-        .catch(e => console.log("Oops, error", e))
-      }
+          .then(data =>console.log(data))
+          .catch(e => console.log("Oops, error", e))
+        }
     },
 
     mounted () {
