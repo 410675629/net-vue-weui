@@ -34,8 +34,6 @@
     │   ├── components                      公共组件目录
     │   │   ├── login                          登录相关模块
     │   │   ├── home                           首页
-    │   │   ├── recommend                      我的推荐
-    │   │   ├── about                          关于猎头
     │   │   └── notfound.vue                   模块未找到
     │   ├── assets                          资源目录，这里的资源会被wabpack构建
     │   │   └── images
@@ -46,9 +44,9 @@
     │   │   └── index.js
     │   └── views                           页面目录
     │       ├── login                          登录相关模块
-    │       ├── home                           首页
-    │       ├── recommend                      我的推荐
-    │       └── about                          关于猎头
+    │       ├── homePage                       首页
+    │       ├── myPage                         我的页面
+    │       └── other                          其他
     ├── static                          纯静态资源，不会被wabpack构建。
     └── test                            测试文件目录（unit&e2e）
         └── unit                            单元测试

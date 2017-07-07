@@ -5,17 +5,14 @@
 const Hello = r => require(['views/hello'], r);
 const Index = r => require(['views/home/index'], r);   /*首页*/
 const CampusNews = r => require(['views/campusNews'], r);   /*版权*/
-const Copyright = r => require(['views/copyright'], r);   /*版权*/
-const Header = r => require(['views/header'], r);   /*头部*/
+//const Copyright = r => require(['views/copyright'], r);   /*版权*/
+//const Header = r => require(['views/header'], r);   /*头部*/
+//const schedule= r => require(['views/campus/index'], r);   /*校园招聘*/
 
-const schedule= r => require(['views/campus/index'], r);   /*校园招聘*/
-
-const Netease= r => require(['views/Netease/index'], r);   /*关于网易*/
+//const Netease= r => require(['views/Netease/index'], r);   /*关于网易*/
 
 const NotFound = r => require(['views/notfound'], r);
-const HomePage = r => require(['views/homePage'], r);
-
-
+const HomePage = r => require(['views/homePage/index'], r);
 
 
 
@@ -46,21 +43,13 @@ const routes = [{
 			path: '/detail',
 			component: Detail
 		}]
-	},*/{
-		path: '/schedule/:id',  /*校园招聘*/
+	},*//*{
+		path: '/schedule/:id',  
 		components: {
 	        default:schedule
 	      },
 		name: 'schedule'
-	},{
-		path: '/Netease',  /*关于网易*/
-		components: {
-	        default: Netease,
-	        header: Header,
-	        copyright: Copyright
-	      },
-		name: 'netease'
-	}].map(route => {
+	}*/].map(route => {
 		route.path = rootPath + route.path;
 		return route;
 	});

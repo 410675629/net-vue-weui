@@ -6,31 +6,16 @@
         <mt-swipe-item>3</mt-swipe-item>
       </mt-swipe>
       <!-- 校招动态-->
-      <mt-campusNews my-title ='校招动1态'> </mt-campusNews>
+      <mt-campusNews my-title ='校招动态'></mt-campusNews>
       
       <!-- 行程安排-->
-      <mt-schedule my-title ='行程安排'> </mt-schedule>
+      <!-- <mt-schedule my-title ='行程安排'> </mt-schedule> -->
 
 
      <!--  <p class="welcome">欢迎使用-{{message}} --{{activeIndex}}</p>      
       <p class="welcome" :id=this.$store.state.cart.newState>---{{this.$store.state.cart.newState}}---</p>   
      <span @click="increment">{{count}}</span> -->
-     
-      <div class="index-header f-fc">
-        <a href="javascript:void(0)" class="fr icons i-user btn-admin" id="btnShowAccountSetting"></a>
-        <h1 class="index-logo">
-            <img src="http://cdn.static.tupu360.com/static/AliWeixin/images/indexLogo.png" alt="">
-        </h1>
-      </div>
-
-      <div class="abs-footer">
-            <img src="http://cdn.static.tupu360.com/static/AliWeixin/images/indexBg.png">
-            <div class="nav-box d-box">
-                <a href="/campus/index" class="navs flex1 n-campus">校园招聘</a>
-                <a href="http://cdn.zhaopin.tupu360.com/weixin/alibaba_wx/" class="navs flex1 n-meet">&nbsp; 游园会 &nbsp;</a>
-              <a href="/social/index" class="navs flex1 n-social">社会招聘</a>
-            </div>
-      </div>
+   
     </div>
 </template>
 
@@ -38,8 +23,11 @@
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
   import {CellSwipe,Swipe,SwipeItem,Range,Toast} from 'mint-ui';
-  import CampusNews from '../campusNews/index.vue';;
-  import Schedule from '../schedule/index.vue';
+  
+  import CampusNews from '../campusNews/index.vue'; // 校招动态
+  import Schedule from '../schedule/index.vue';    //行程安排
+  
+
   export default {
     data () {
     	return {

@@ -2,24 +2,13 @@
 
 <template>
   <div>
-
     <div class="page-tabbar">
       <div class="page-wrap">
-        <div class="page-title">Tabbar</div>
-        <div>
-          <mt-cell class="page-part" title="当前选中" :value="selected" />
-        </div>
-
-        <mt-tab-container class="page-tabbar-container" v-model="selected" swipeable>
+        <mt-tab-container class="page-tabbar-container" v-model="selected">
           <mt-tab-container-item id="tab-container1">
             <mt-index/>
           </mt-tab-container-item>
-          <mt-tab-container-item id="tab-container2">
-            <mt-cell v-for="n in 5" :title="'订单 ' + n" />
-          </mt-tab-container-item>
-          <mt-tab-container-item id="tab-container3">
-            <mt-cell v-for="n in 7" :title="'发现 ' + n" />
-          </mt-tab-container-item>
+
           <mt-tab-container-item id="tab-container4">
             <div class="page-part">
               <mt-cell v-for="n in 12" :title="'我的 ' + n" />
@@ -33,13 +22,14 @@
 
       <mt-tabbar v-model="selected" fixed>
         <mt-tab-item id="tab-container1">
-          <img slot="icon" src="http://cdn.static.tupu360.com/static/AliWeixin/images/indexLogo.png" width="20px" height="20px">外卖</mt-tab-item>
-        <mt-tab-item id="tab-container2">
-          <img slot="icon" src="http://cdn.static.tupu360.com/static/AliWeixin/images/indexLogo.png" width="20px" height="20px">订单</mt-tab-item>
-        <mt-tab-item id="tab-container3">
-          <img slot="icon" src="http://cdn.static.tupu360.com/static/AliWeixin/images/indexLogo.png" width="20px" height="20px">发现</mt-tab-item>
+          <i class="iconfont icon-shouye"></i>
+          <p>首页</p>
+        </mt-tab-item>
+        
         <mt-tab-item id="tab-container4">
-          <img slot="icon" src="http://cdn.static.tupu360.com/static/AliWeixin/images/indexLogo.png" width="20px" height="20px">我的</mt-tab-item>
+          <i class="iconfont icon-wode"></i>
+          <p>我的</p>
+          </mt-tab-item>
       </mt-tabbar>
     </div>
   </div>
@@ -104,5 +94,7 @@
     height: 100%;
     padding-bottom: 100px;
   }
+
+
 
 </style>
