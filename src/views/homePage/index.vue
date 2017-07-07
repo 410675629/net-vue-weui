@@ -10,6 +10,7 @@
           </mt-tab-container-item>
 
           <mt-tab-container-item id="tab-container4">
+            <mt-myPage/>
             <div class="page-part">
               <mt-cell v-for="n in 12" :title="'我的 ' + n" />
             </div>
@@ -39,7 +40,8 @@
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
   import { Tabbar, TabItem ,TabContainer, TabContainerItem,Cell} from 'mint-ui';
-  import Index from '../home/index.vue';;
+  import Index from '../home/index.vue';
+  import Mypage from '../myPage/index.vue';
   export default {
     data () {
       return {
@@ -64,6 +66,7 @@
       'mt-cell':Cell,
       'mt-tab-container':TabContainer,
       'mt-index':Index,
+      'mt-myPage':Mypage
     },
 
     computed:{

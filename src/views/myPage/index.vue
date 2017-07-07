@@ -1,13 +1,5 @@
 <template>
     <div>
-      <mt-swipe :auto="4000">
-        <mt-swipe-item>1</mt-swipe-item>
-        <mt-swipe-item>2</mt-swipe-item>
-        <mt-swipe-item>3</mt-swipe-item>
-      </mt-swipe>
-      <!-- 校招动态-->
-      <mt-campusNews my-title ='校招动态'></mt-campusNews>
-      
       <!-- 行程安排-->
       <!-- <mt-schedule my-title ='行程安排'> </mt-schedule> -->
 
@@ -22,10 +14,7 @@
 <script>
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
-  import {CellSwipe,Swipe,SwipeItem,Range,Toast} from 'mint-ui';
-  
-  import CampusNews from '../campusNews/index.vue'; // 校招动态
-  import Schedule from '../schedule/index.vue';    //行程安排
+  import {Header,cell} from 'mint-ui';
   
 
   export default {
@@ -37,11 +26,12 @@
 
     methods: {
       
-      //设置tittle
-      setTittle(){
-        document.title = '首页'
-      },
 
+      setTittle(){
+
+        document.title = '我的'
+      },
+      
       //只能dispatch action
       increment () {
         //this.$store.dispatch('INCREMENT');
@@ -83,9 +73,9 @@
     },
 
     mounted () {
-      this.setTittle();
       this.getContent();
 
+      this.setTittle();
       //提交mutations 
       this.$store.commit({
         type:'MESSAGE',
@@ -94,12 +84,7 @@
     },
 
     components: {
-      'mt-swipe-item':CellSwipe,
-      'mt-swipe-item':SwipeItem,
-      'mt-swipe':Swipe,
-      'mt-range':Range,
-      'mt-campusNews':CampusNews,
-      'mt-schedule':Schedule
+      
     },
 
     computed:{
