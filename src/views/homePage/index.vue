@@ -8,15 +8,9 @@
           <mt-tab-container-item id="tab-container1">
             <mt-index/>
           </mt-tab-container-item>
-
+          
           <mt-tab-container-item id="tab-container4">
             <mt-myPage/>
-            <div class="page-part">
-              <mt-cell v-for="n in 12" :title="'我的 ' + n" />
-            </div>
-            <router-link to="/">
-             <!--  <mt-button type="danger" size="large">退出</mt-button> -->
-            </router-link>
           </mt-tab-container-item>
         </mt-tab-container>
       </div>

@@ -3,7 +3,7 @@ module.exports = {
     isHttps: 1,
     product : 'hzhr', // 产品ID
     promark : 'XRWjxVa',// 组件ID
-    host : 'campus.163.com',// 组件所在域名
+    host : 'm.campus.163.com',// 组件所在域名
     single : 0,// 是否只用一个模块，1是，0否
     width:'240',
     page : 'login',// 首屏
@@ -22,6 +22,6 @@ module.exports = {
       //window.location.reload();
     },                 //【可选】登录成功后回调，也可使用外部注入方式
     regcb : function(){
-       window.location.reload();
+       //window.location.reload();
     },                   //【可选】注册成功后回调，也可使用外部注入方式
   };

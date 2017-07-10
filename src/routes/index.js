@@ -13,6 +13,7 @@ const CampusNews = r => require(['views/campusNews'], r);   /*版权*/
 
 const NotFound = r => require(['views/notfound'], r);
 const HomePage = r => require(['views/homePage/index'], r);
+const MailPage = r => require(['views/mailPage/index'], r);
 
 
 
@@ -31,7 +32,13 @@ const routes = [{
 	        default: HomePage,      // 内容区域
 	      },
 		name: 'home'
-	},/*{
+	},{
+		path: '/mailPage',  // 站内信
+		components: {
+	        default: MailPage, 
+	      },
+		name: 'home'
+	}/*{
 		path: 'campus', //  校园招聘
 		components: {
 	        default: Recommend,
@@ -49,7 +56,7 @@ const routes = [{
 	        default:schedule
 	      },
 		name: 'schedule'
-	}*/].map(route => {
+	}&*/].map(route => {
 		route.path = rootPath + route.path;
 		return route;
 	});

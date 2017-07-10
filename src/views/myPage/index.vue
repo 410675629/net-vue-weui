@@ -1,20 +1,26 @@
 <template>
     <div>
-      <!-- 行程安排-->
-      <!-- <mt-schedule my-title ='行程安排'> </mt-schedule> -->
+      <mt-cell title="应聘状态" isLink label="描述信息">
+          <span>面试已安排</span>
+          <i slot="icon" class="iconfont icon-dongtai"></i>
+          <mt-badge type="error" size='small'>10</mt-badge>
+      </mt-cell>
+      
+      <mt-cell title="站内信" isLink to='/mailPage'>
+          <i slot="icon" class="iconfont icon-mail"></i>
+          <mt-badge type="error" size='small'>10</mt-badge>
+      </mt-cell>
 
-
-     <!--  <p class="welcome">欢迎使用-{{message}} --{{activeIndex}}</p>      
-      <p class="welcome" :id=this.$store.state.cart.newState>---{{this.$store.state.cart.newState}}---</p>   
-     <span @click="increment">{{count}}</span> -->
-   
+      <mt-cell title="网易邮箱帐号" isLink>
+          <i slot="icon" class="iconfont icon-wode"></i>
+      </mt-cell>
     </div>
 </template>
 
 <script>
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
-  import {Header,cell} from 'mint-ui';
+  import {Header,Cell,Badge} from 'mint-ui';
   
 
   export default {
@@ -35,7 +41,7 @@
       //只能dispatch action
       increment () {
         //this.$store.dispatch('INCREMENT');
-        
+
        this.$store.dispatch({
           type:'INCREMENT',
           amount: 10
@@ -87,13 +93,13 @@
 
     components: {
       'mt-header':Header,
+      'mt-cell':Cell,
+      'mt-badge':Badge
     },
 
     computed:{
       ...mapGetters({
-        doneTodo:'doneTodosCount',
-        message:'message',
-        getShowCon:'getShowCon'
+       
       }),
 
       ...mapState({
