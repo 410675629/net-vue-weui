@@ -3,12 +3,11 @@
   <div class="m-campusNews">
     <h1><i class="iconfont icon-dongtai"></i><span>{{myTitle}}</span></h1>
 
-    <ul @click="__evDelete">
+    <ul>
       <li v-for="item in tableData">
          <mt-campusItems my-title ='标题' :item =item />
       </li>
     </ul>
-
     <mt-more/>
 
   </div>
@@ -26,32 +25,49 @@
     
     data () {
       return {
-          
+          tableData:[]
       }
     },
 
     methods:{
-      
+      async getCampusNews () {
+        let self  =this;
+        fetch('/api/getCampusNews').then(response => response.json())
+          .then(data=>this.tableData =data.data)
+          .catch(e => console.log("Oops, error", e))
+      },
+
       //删除校招动态
       __evDelete(){
-        //this.$store.dispatch('deleteItem');
-        this.deleteItem();
+        debugger;
+        //this.$store.dispatch('deleteItem');  
+        this.deleteItem(); //使用mapActions形式
       },
-    },
 
+      __evAddToCart(){
+        debugger;
+        this.addToCart();
+      }
+    },
     components: {
       'mt-campusItems':CampusItem,
       'mt-more':More
     },
+
     computed:{
 
       ...mapState({
-          tableData:state=>state.products.tableData
+         // tableData:state=>state.products.tableData
       }),
       ...mapActions([
-        'deleteItem'
+        'deleteItem',
+        'addToCart'
       ])
-    }
+    },  
+
+    mounted () {
+      this.getCampusNews();
+    },
 
   }
 

@@ -22,7 +22,7 @@
 <script>
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
-  import {CellSwipe,Swipe,SwipeItem,Range,Toast} from 'mint-ui';
+  import {CellSwipe,Swipe,SwipeItem,Range} from 'mint-ui';
   
   import CampusNews from '../campusNews/index.vue'; // 校招动态
   import Schedule from '../schedule/index.vue';    //行程安排
@@ -62,29 +62,13 @@
       gotData(){
         var self = this;
         self.$store.dispatch('actionA').then(()=>{
-          self.getContent();
+          //self.getContent();
         })
       },
 
-      async getContent () {
-          let instance = Toast({
-            message: 'Upload Completed',
-            position: 'bottom',
-            duration: 5000
-          });
-        setTimeout(() => {
-          instance.close();
-        }, 2000);
-        
-        fetch('/api/login').then(response => response.json())
-          .then(data =>console.log(data))
-          .catch(e => console.log("Oops, error", e))
-        }
     },
 
     mounted () {
-      this.setTittle();
-      this.getContent();
 
       //提交mutations 
       this.$store.commit({
@@ -92,6 +76,7 @@
         count:11
       });
     },
+
 
     components: {
       'mt-swipe-item':CellSwipe,

@@ -31,11 +31,11 @@
 
         document.title = '我的'
       },
-      
+
       //只能dispatch action
       increment () {
         //this.$store.dispatch('INCREMENT');
-
+        
        this.$store.dispatch({
           type:'INCREMENT',
           amount: 10
@@ -73,9 +73,10 @@
     },
 
     mounted () {
-      this.getContent();
+      //this.getContent();
 
       this.setTittle();
+      
       //提交mutations 
       this.$store.commit({
         type:'MESSAGE',
@@ -83,8 +84,9 @@
       });
     },
 
+
     components: {
-      
+      'mt-header':Header,
     },
 
     computed:{

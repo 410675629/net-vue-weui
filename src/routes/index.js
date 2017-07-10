@@ -54,6 +54,7 @@ const routes = [{
 		return route;
 	});
 
+
 	// 404 页
 	routes.push({path: '*', component: NotFound, name: 'notfound'});
 

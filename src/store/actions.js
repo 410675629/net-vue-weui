@@ -11,7 +11,6 @@ export const addToCart = ({ commit }, product) => {
 }
 
 export const changeActive = ({commit,state},index)=>{
-    console.log(1);
     commit(types.CHANGEACTIVE,index)
 };
 
