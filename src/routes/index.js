@@ -3,7 +3,8 @@
  * Created by zhangzhang on 2017-04-05.
  */
 const Hello = r => require(['views/hello'], r);
-const Index = r => require(['views/home/index'], r);   /*首页*/
+const IndexPage = r => require(['views/indexPage/index'], r);
+const HomePage= r => require(['views/homePage/index'], r);   /*首页*/
 const CampusNews = r => require(['views/campusNews'], r);   /*版权*/
 //const Copyright = r => require(['views/copyright'], r);   /*版权*/
 //const Header = r => require(['views/header'], r);   /*头部*/
@@ -12,7 +13,8 @@ const CampusNews = r => require(['views/campusNews'], r);   /*版权*/
 //const Netease= r => require(['views/Netease/index'], r);   /*关于网易*/
 
 const NotFound = r => require(['views/notfound'], r);
-const HomePage = r => require(['views/homePage/index'], r);
+//const HomePage = r => require(['views/home/index'], r);
+const MyPage = r => require(['views/myPage/index'], r);
 const MailPage = r => require(['views/mailPage/index'], r);
 
 
@@ -27,17 +29,25 @@ const routes = [{
 			name:'home' //重定向到首页 
 		}
 	}, {
-		path: '/homePage',  // 主页
+		path: '/index',  // 主页
 		components: {
-	        default: HomePage,      // 内容区域
-	      },
-		name: 'home'
+	        default: IndexPage    // 内容区域
+	    },
+	    children:[{
+	    	path:'homePage',
+	    	component:HomePage,
+	    	name:'home' 
+	    },{
+	    	path:'myPage',
+	    	component:MyPage
+	    }],
+		name: 'index'
 	},{
 		path: '/mailPage',  // 站内信
 		components: {
 	        default: MailPage, 
 	      },
-		name: 'home'
+		name: 'mail'
 	}/*{
 		path: 'campus', //  校园招聘
 		components: {

@@ -14,7 +14,7 @@ pre,code,kbd,samp{}
 q:before,q:after{content:none;}
 textarea{overflow:auto;resize:none;}
 label,summary{cursor:default;}
-a,button{cursor:pointer;}
+a,button{cursor:pointer;color:#999}
 a:link,:active{background-color:none}
 h1,h2,h3,h4,h5,h6,strong,b{font-weight:bold;}
 del,ins,u,s,a,a:hover{text-decoration:none;}
@@ -75,4 +75,6 @@ body{width: 100%;margin: 0 auto;}
 .f-notext{overflow:hidden;text-indent:-20000px;}
 .f-m{margin:0 auto;}
 
+
+.f-more{color:#999;}
 

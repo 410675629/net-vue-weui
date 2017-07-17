@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <a class="u-more" >更多</a>
+    <a class="u-more" href="https://mp.weixin.qq.com/mp/homepage?__biz=MzAxNDIzMDQwNg==&hid=1&sn=61e1ee5184ea24eaa12718209ccdcaed">更多</a>
   </div>
 </template>
 
