@@ -7,11 +7,10 @@
       </div>
 
       <div class="f-fr f-tar f-more">
-        <router-link :to='moreUrl'>
-          <span>查看更多</span> <i class="iconfont icon-gengduo"></i>
-        </router-link>
+      <a :href ='moreUrl' ><span>查看更多</span> <i class="iconfont icon-gengduo"></i></a>
       </div>
     </header>
+    
     <ul>
       <li v-for="item in tableData">
         <mt-campusItems my-title ='标题' :item =item />
@@ -49,13 +48,11 @@
 
       //删除校招动态
       __evDelete(){
-        debugger;
         //this.$store.dispatch('deleteItem');  
         this.deleteItem(); //使用mapActions形式
       },
 
       __evAddToCart(){
-        debugger;
         this.addToCart();
       }
     },

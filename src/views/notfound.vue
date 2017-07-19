@@ -26,7 +26,6 @@
     }),
 
     mounted: function () {
-      //alert(this.$store.state.cart.message)
       this.$store.commit('MESSAGE', '404 Not Found！!');
       alert(this.$store.getters.cart.message)
     }

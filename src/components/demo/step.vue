@@ -1,3 +1,5 @@
+<!-- demo -->
+
 <template>	
 	<div>
 	 	<el-steps :space="space" :active="active"  finish-status="success">
@@ -13,7 +15,6 @@
 </template>
 
 <script>
-
   import {mapMutations,mapActions} from 'vuex';
 
   export default {

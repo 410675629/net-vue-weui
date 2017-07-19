@@ -200,3 +200,21 @@
         参考文档： https://github.com/camsong/blog/issues/2
 
 ## 2017年06月02日 引入vue-strap  ui 组件
+
+## 2017年07月17日 引入markdown ，并制作指令
+
+    `
+    Vue.directive('marked',{
+      //注意，这儿得使用bind钩子函数，因为我们使用此指令主要是为了写文档，
+      //文档里不会有变量且一次性生成,而update在自定义指令所在模板变化时就会重新执行，
+      //会影响渲染文档的方法，所以不能使用update钩子，也不能使用函数简写
+      bind:function(el,binding,vnode){
+
+        el.innerHTML = Marked(el.innerText);
+      }
+    })
+
+    `
+##  2017年07月19 架构调整
+    
+

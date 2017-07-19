@@ -3,6 +3,7 @@
   <div>
     <div class="page-tabbar">
       <router-view/>
+      
       <div class="mint-tabbar is-fixed">
         <router-link v-for="item in tagNames" :to="item.tabLink" class ='mint-tab-item'>
           <div class="mint-tab-item-icon"></div>

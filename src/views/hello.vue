@@ -1,3 +1,4 @@
+<!-- demo -- >
 <template>
   <div class="hello">
     <Step :active='active' :space="space" direction="vertical"></Step>

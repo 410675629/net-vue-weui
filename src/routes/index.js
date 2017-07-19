@@ -2,21 +2,11 @@
  * @file
  * Created by zhangzhang on 2017-04-05.
  */
-const Hello = r => require(['views/hello'], r);
 const IndexPage = r => require(['views/indexPage/index'], r);
 const HomePage= r => require(['views/homePage/index'], r);   /*首页*/
-const CampusNews = r => require(['views/campusNews'], r);   /*版权*/
-//const Copyright = r => require(['views/copyright'], r);   /*版权*/
-//const Header = r => require(['views/header'], r);   /*头部*/
-//const schedule= r => require(['views/campus/index'], r);   /*校园招聘*/
-
-//const Netease= r => require(['views/Netease/index'], r);   /*关于网易*/
-
-const NotFound = r => require(['views/notfound'], r);
-//const HomePage = r => require(['views/home/index'], r);
-const MyPage = r => require(['views/myPage/index'], r);
-const MailPage = r => require(['views/mailPage/index'], r);
-
+const NotFound = r => require(['views/notfound'], r); /** 未找到页面*/
+const MyPage = r => require(['views/myPage/index'], r); /** 个人中心 **/
+const MailPage = r => require(['views/mailPage/index'], r); /** 站内信详情 **/
 
 
 // 根目录

@@ -34,17 +34,9 @@
       },
     },
 
-/*     mounted() {
-        debugger;
-        console.log(loginConfig)
-        const urs    = new URS(loginConfig);
-        urs.showIframe();
-        urs.logincb=function(){
-          debugger;
-          console.log('=======');
-          console.log(this)
-        }
-    },*/
+    mounted() {
+        
+    },
 
 
     methods: {

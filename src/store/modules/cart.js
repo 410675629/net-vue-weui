@@ -28,7 +28,6 @@ const actions = {
   // [1.1]最简单的 action 异步处理mutations
   // Action 可以包含任意异步操作
  ADDCOUNT(context) {
-    debugger;
     //调用 context.commit 提交一个 mutation，
     //或者通过 context.state 和 context.getters 
     //来获取 state 和 getters
