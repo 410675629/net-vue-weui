@@ -2,7 +2,7 @@
 <!--suppress ALL -->
 <template>
   <div id="app">
-      <router-view class="g-body"></router-view>   
+      <router-view  class="g-body"></router-view>   
       <router-view name="copyright"></router-view>   
       <remote src="https://webzj.reg.163.com/webapp/javascript/page/json3.js"></remote>
       <remote  src="https://webzj.reg.163.com/webapp/javascript/message.js?v=123456"></remote>
@@ -40,8 +40,6 @@
 
 
     methods: {
-
-
       /**
        * 退出登录
        * @return {[type]} [description]

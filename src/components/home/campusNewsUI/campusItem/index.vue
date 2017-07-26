@@ -1,13 +1,22 @@
 
 <template>
-  <a class="list_item js_post" href="http://mp.weixin.qq.com/s?__biz=MzAxNDIzMDQwNg==&amp;mid=2651374351&amp;idx=1&amp;sn=2e969c7562ef178c36211c2f6607c26d&amp;scene=19#wechat_redirect">
-    <div class="cover">
-      <img class="img js_img" src="http://mmbiz.qpic.cn/mmbiz_png/VfRCotewWwdAP6eawrXmzyWiaQfuVo8GDRCBsL2YbAOTgnsvB4TKzJjO97CovaUyLc0ETpPkoUicJeryeCehwe3w/0?wx_fmt=png" alt=""></div>
-    <div class="cont">
-      <h2 class="title js_title">{{item.title}}</h2>
-      <p class="desc">{{item.desc}}</p>
+  <div>
+    <a class="list_item js_post" :href=item.contentUrl>
+      <div>
+        <div class="cover">
+          <!-- <img class="img js_img" :src=item.imgUrl alt=""></div> -->
+          <img class="img js_img" src="../../../../assets/images/4.png" alt=""></div>
+        <div class="cont">
+          <h2 class="title js_title">{{item.title}}</h2>
+          <p class="desc">{{item.dsc}}</p>
+        </div>
+      </div>
+    </a>
+    <div class="solid">
+
     </div>
-  </a>
+  </div>
+
 </template>
 
 <script>
@@ -23,23 +32,10 @@
     },
 
     methods:{
-      
-      //删除校招动态
-      __evDelete(){
-          //this.$store.dispatch('deleteItem');
-          this.deleteItem();
-      },
     },
 
     computed:{
 
-      ...mapState({
-          tableData:state=>state.products.tableData
-      }),
-
-      ...mapActions([
-        'deleteItem'
-      ])
     }
 
   }
@@ -48,10 +44,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" rel="stylesheet/scss" scoped>
-  
+  a{
+    display: block;
+  }
   .list_item{
     display: block;
-    padding: 15px 15px 10px 10px;
+    padding: 0.3rem 0.3rem 0.2rem 0.2rem;
     overflow: hidden;
     position: relative;
     text-decoration: none;
@@ -65,8 +63,9 @@
 
 .list_item .cover .img {
     display: block;
-    width: 80px;
-    height: 60px;
+    width: 1.8rem;
+    height: 1.73rem;
+    border-radius:0.08rem;
 }
 
 .list_item .cont {
@@ -74,8 +73,9 @@
 }
 
 .list_item .cont .title {
+    margin-top: 0.05rem;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 0.32rem;
     color: #000;
     width: 100%;
     overflow: hidden;
@@ -83,9 +83,14 @@
     white-space: nowrap;
     word-wrap: normal;
 }
-
+.solid{
+  width: 6.9rem;
+  border-bottom: 0.02rem solid #efefef;
+  margin: 0 auto;
+}
 .list_item .cont .desc {
-    font-size: 13px;
+    margin-top: 0.24rem;
+    font-size: 0.26rem;
     color: #999;
     overflow: hidden;
     text-overflow: ellipsis;

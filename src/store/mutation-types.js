@@ -1,17 +1,9 @@
 
-export const ADD = 'ADD'
-export const INCREMENT = 'INCREMENT'
-export const MESSAGE = 'MESSAGE'
-export const CHANGEACTIVE ="CHANGEACTIVE"
-
-export const CHANGECON ="CHANGECON"
-export const DELETEITEM ="DELETEITEM"
-export const gotData ="gotData"
 
 
-//后面可以删掉
-export const ADD_TO_CART = 'ADD_TO_CART'
-export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
-export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS'
-export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
-export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
+export const GETCAMPUSNEWS = "GETCAMPUSNEWS";  // 得到职位列表
+export const GETMAILLIST = "GETMAILLIST";      //得到邮箱列表
+export const GETPERSONALINFO = 'GETPERSONALINFO'; //获取个人中心 信息
+export const GETMAILDETAIL = 'GETMAILDETAIL'; //获取站内信详情
+
+

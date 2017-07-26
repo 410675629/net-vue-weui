@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="page-tabbar">
-      <router-view/>
+      <router-view class ='a'/>
       
       <div class="mint-tabbar is-fixed">
         <router-link v-for="item in tagNames" :to="item.tabLink" class ='mint-tab-item'>

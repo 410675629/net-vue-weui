@@ -2,8 +2,8 @@
 <template>
   <div class="m-campusNews">
     <ul>
-      <li v-for="item in tableData">
-         <mt-campusItems my-title ='标题' :item =item />
+      <li v-for="item in mailList">
+        <mt-mailItem :item=item></mt-mailItem>
       </li>
     </ul>
   </div>
@@ -12,55 +12,31 @@
 <script>
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
-  import CampusItem from '../../components/home/campusNewsUI/campusItem/index.vue';
-  
+  import mailItem from '../../components/mail/mailsItem/index.vue';
+
   export default {
-    props: ['myTitle'],
-    
-    data () {
-      return {
-          tableData:[]
-      }
-    },
+      props: ['myTitle'],
 
-    methods:{
-      async getCampusNews () {
-        let self  =this;
-        fetch('/api/getCampusNews').then(response => response.json())
-          .then(data=>this.tableData =data.data)
-          .catch(e => console.log("Oops, error", e))
+      data () {
+          return{
+          }
       },
-
-      //删除校招动态
-      __evDelete(){
-        debugger;
-        //this.$store.dispatch('deleteItem');  
-        this.deleteItem(); //使用mapActions形式
+      computed:{
+          ...mapState({
+              mailList: state => state.myPage.mailList
+          })
       },
-
-      __evAddToCart(){
-        this.addToCart();
-      }
+      methods:{
+        ...mapActions([
+            'getMailList'
+        ]),
     },
     components: {
-      'mt-campusItems':CampusItem
+      'mt-mailItem':mailItem
     },
-
-    computed:{
-
-      ...mapState({
-         // tableData:state=>state.products.tableData
-      }),
-      ...mapActions([
-        'deleteItem',
-        'addToCart'
-      ])
-    },  
-
     mounted () {
-      this.getCampusNews();
+      this.getMailList();
     },
-
   }
 
 </script>
@@ -68,7 +44,9 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" rel="stylesheet/scss" scoped>
       .m-campusNews{
+        
 
+        
         h1{
           border: 1px solid #efefef;
           background: #eee;

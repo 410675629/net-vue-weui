@@ -1,93 +1,119 @@
 <template>
-    <div>
-      <mt-cell title="应聘状态" isLink label="描述信息">
-          <span>面试已安排</span>
-          <i slot="icon" class="iconfont icon-dongtai"></i>
-          <mt-badge type="error" size='small'>10</mt-badge>
-      </mt-cell>
-      
-      <mt-cell title="站内信" isLink to='/mailPage'>
-          <i slot="icon" class="iconfont icon-mail"></i>
-          <mt-badge type="error" size='small'>10</mt-badge>
-      </mt-cell>
-
-      <mt-cell title="网易邮箱帐号" isLink>
-          <i slot="icon" class="iconfont icon-wode"></i>
+  <div class="myPage">
+    <div class="headImage">
+            <img src="../../assets/images/4.png" />
+    </div>
+    <div @click="showState">
+      <mt-cell title="应聘状态"  :label="applyRecord.applyPositionName">
+        <span>{{applyRecord.applyStatusName}}</span>
+        <span class="arrow"> <i :class="{'arrow-right arrow-down':show,'arrow-right':!show}"></i>
+        </span> <i slot="icon" class="iconfont icon-dongtai"></i>
       </mt-cell>
     </div>
+
+    <div :class="{'showState':show,'hideState':!show}">
+      <ul>
+        <li v-for="item in process">
+          <mt-cell :title='item.title'>
+            <i slot="icon" class="iconfont icon-tongguo i-success"  v-if="active > item.num"></i>
+            <i slot="icon" class="iconfont icon-dengdaizhong i-pendding"  v-if="active == item.num&&active!=noPass"></i>
+            <i slot="icon" class="iconfont icon-weitongguo i-error" v-if = "active == item.num&&active==noPass"></i>
+            <span v-if ="active ==item.num">{{applyRecord.applyStatusName}}</span>
+          </mt-cell>
+        </li>
+      </ul>
+    </div>
+
+    <mt-cell title="站内信" isLink to='/mailPage'>
+      <i slot="icon" class="iconfont icon-mail"></i>
+      <mt-badge type="error" size='small'>{{mailNoReadNum}}</mt-badge>
+    </mt-cell>
+
+    <mt-cell title="网易邮箱帐号" isLink>
+      <i slot="icon" class="iconfont icon-wode"></i>
+    </mt-cell>
+  </div>
 </template>
 
 <script>
 
   import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
-  import {Header,Cell,Badge} from 'mint-ui';
+  import {Header,Cell,Badge,Toast} from 'mint-ui';
   
 
   export default {
     data () {
-    	return {
-       /* stitle:'校招动态'*/
+        return {
+          show:false,
+          noPass:0,
+          process: [{
+              'num': '1',
+              'state': [1, 2],
+              'title': '简历筛选/测评'
+          }, {
+              'num': '2',
+              'state': [3, 4, 5, 6, 7],
+              'title': '笔试'
+          }, {
+              'num': '3',
+              'state': [8, 9, 10, 11, 12, 13],
+              'title': '面试'
+          }, {
+              'num': '4',
+              'state': [14],
+              'title': 'offer'
+          }, {
+              'num': '5',
+              'state': [15],
+              'title': '入职'
+          }]
       }
     },
 
-    methods: {
-      
 
-      setTittle(){
-
-        document.title = '我的'
-      },
-
-      //只能dispatch action
-      increment () {
-        //this.$store.dispatch('INCREMENT');
-
-       this.$store.dispatch({
-          type:'INCREMENT',
-          amount: 10
-        })
-
-      },
+    computed:{
+        ...mapState({
+            mailNoReadNum: state => state.myPage.mailNoReadNum,
+            applyRecord: state => state.myPage.applyRecord
+        }),
 
 
-     clickTab(index){
-          console.log(index);
-          this.$store.commit('CHANGEACTIVE',index);
-      },
-
-      gotData(){
-        var self = this;
-        self.$store.dispatch('actionA').then(()=>{
-          self.getContent();
-        })
-      },
-
-      async getContent () {
-          let instance = Toast({
-            message: 'Upload Completed',
-            position: 'bottom',
-            duration: 5000
-          });
-        setTimeout(() => {
-          instance.close();
-        }, 2000);
-        
-        fetch('/api/login').then(response => response.json())
-          .then(data =>console.log(data))
-          .catch(e => console.log("Oops, error", e))
+        active(){
+          for (var i = 0; i < this.process.length; i++) {
+            var indexOfArr = this.process[i].state.indexOf(this.applyRecord.applyStatus);
+            if(indexOfArr>-1){
+              if(indexOfArr == this.process[i].state.length-1) 
+                this.noPass = i+1;
+              return i+1;
+            }
+          }
         }
     },
 
-    mounted () {
-      //this.getContent();
+    methods: {
+        setTittle(){
+        document.title = '我的'
+        },
 
+        /**
+         * 控制 面试 状态栏的展开与合闭
+         */
+        showState(){
+            this.show=!this.show;
+        },
+
+
+          ...mapActions([
+              'getPersonalInfo'
+          ]),
+
+        },
+        
+
+    mounted () {
+      this.getPersonalInfo()
       this.setTittle();
       
-      //提交mutations 
-      this.$store.commit({
-        type:'MESSAGE',
-        count:11
-      });
     },
 
 
@@ -95,41 +121,51 @@
       'mt-header':Header,
       'mt-cell':Cell,
       'mt-badge':Badge
-    },
-
-    computed:{
-      ...mapGetters({
-       
-      }),
-
-      ...mapState({
-          count: state => state.cart.count+2,
-          activeIndex: state => state.tab.activeIndex+1
-      }),
-
-      
-      
     }
   }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" rel="stylesheet/scss" scoped>
-  h1 {
+<style lang="scss" rel="stylesheet/scss" >
+
+.myPage{
+    h1 {
     color: #42b983;
   }
-
-  .logo {
-    width: 2rem;
-    height: 2rem;
-    a {
-      color: #42b983;
-      text-decoration: none;
+  .headImage{
+    width: 100%;
+    height: 2.2rem;
+    background: #eeeeee;
+    text-align: center;
+    img{
+      width:1.2rem;
+      height:1.2rem;
+      border-radius:100%;
+      margin-top: 0.5rem;
     }
   }
+  .i-success{
+    color: #7ED321;
+  }
 
+  .i-pendding{
+    color:#F6A623;
+  }
+  .i-error{
+    color:#F8513B;
+  }
 
+  .hideState{
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+      display:none;
+  }
+
+  .showState{
+      transition: all 0.5s ease;
+      display:block;
+  }
 
   .mint-swipe {
       height: 4rem;
@@ -141,102 +177,13 @@
   .mint-swipe-item {
       line-height: 4rem;
   }
-  .slide1 {
-      background-color: #0089dc;
-      color: #fff;
-  }
-   .slide2 {
-      background-color: #ffd705;
-      color: #000;
-  }
-   .slide3 {
-      background-color: #ff2d4b;
-      color: #fff;
-  }
 
-  .is-active{
-     background-color: #ff2d4b;
-  }
-
-  .btn-admin {
-      margin: 10px;
-      background-size: 37.5px auto;
-      width: 50px;
-      height: 50px;
-  }
-
-  .i-user {
-      /* background-image: url(../images/iconsUser.png); */
-  }
-
-  .icons {
-      display: inline-block;
-     /*  background: url(../images/iconsCategory.png) 50% 50% no-repeat; */
-      background-size: 25px auto;
-      width: 25px;
-      height: 25px;
-      vertical-align: middle;
-  }
-
-  .index-logo {
-    width: 75.8%;
-    max-width: 569px;
-    min-width: 275px;
-    margin: 0 auto;
-    padding: 50px 0;
-    img {
-      border: 0 none;
-      vertical-align: top;
-      width: 100%;
+  .mint-cell-allow-right{
+      -webkit-transform: rotate(145deg);
+      transform: rotate(145deg);
+      transition: transform .5s;
+      -webkit-transition: -webkit-transform .5s;
   }
 }
-
-
-  .abs-footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    img {
-          border: 0 none;
-          vertical-align: top;
-          width: 100%;
-    }
-    .nav-box {
-        text-align: center;
-        margin: 0 .15rem;
-    }
-    .d-box {
-        display: -webkit-box;
-        display: -moz-box;
-        display: box;
-    }
-
-    .navs {
-        background: #ff7336;
-        margin: .15rem .07rem .15rem;
-        border-radius: 150px;
-        color: #fff;
-        padding: .25rem 0;
-        font-size: 15px;
-        -webkit-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-        box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-    }
-
-    .flex1 {
-        -moz-box-flex: 1;
-        -webkit-box-flex: 1;
-        box-flex: 1;
-        display: block;
-    }
-    .n-meet {
-        background-color: #fcbb09;
-    }
-
-    .n-social {
-        background-color: #10dba3;
-    }
-  }
 
 </style>

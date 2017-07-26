@@ -1,16 +1,15 @@
-export const cartProducts = state => {
-  return state.cart.added.map(({ id, quantity }) => {
-    const product = state.products.all.find(p => p.id === id)
-    return {
-      title: product.title,
-      price: product.price,
-      quantity
-    }
-  })
-}
+/**
+ * Created by hzgaoquankang on 2017/7/23.
+ */
+
+/**
+ * 全局范围的getters
+ */
+
+export const  STATECODE ={
+    SUCCESSCODE : 200,
+    NOLOGIN: 401
+};
 
 
-export const getShowCon = state => {
-    console.log(state.Tab.showContent[state.Tab.activeIndex]);
-  return state.Tab.showContent[state.Tab.activeIndex];
-}
+

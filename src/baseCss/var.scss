@@ -26,20 +26,12 @@ $border-blue:#44c0fe;
 $border-hover:#d9281c;
 
 //backgroundcolor
-$background:#fafafa;
+$background:#fff;
 
 //font-size;
 $fontsize-base:12px;
 $fontsize-normal:14px;
 $fontsize-big:16px;
-
-//function
-/*$clearfix{
-zoom:1;
-&:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
-}*/
-//全屏显示
-//@mix$full{position:absolute;top:0;left:0;width:100%;height:100%;}
 
 //transiton
 //brandcolor
@@ -82,3 +74,5 @@ $nav-bgcolor-hover:#EAE7E7;
 $reject-bgcolor:#fff7f6;
 $reject-font-color:#ff7d7d;
 $reject-border-color:#ff9999;
+
+

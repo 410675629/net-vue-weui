@@ -1,17 +1,14 @@
-import * as actions from './actions'
-import * as getters from './getters'
-import cart from './modules/cart'
-import products from './modules/products'
-import tab from './modules/tab'
-import plugins from './plugins';
-
+import plugins from './plugins'
+import myPage from './modules/myPage'
+import homePage from './modules/homePage'
+import getters from './getters'
+import actions from './actions'
 export default {
-  plugins:[plugins],
-  actions,
-  getters,
-  modules: {
-    cart,
-    products,
-    tab
-  }
+    plugins:[plugins],
+    actions,
+    getters,
+    modules: {
+        myPage,
+        homePage
+    }
 }

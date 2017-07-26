@@ -216,5 +216,57 @@
 
     `
 ##  2017年07月19 架构调整
+
+##  2017年07月19 编辑站内信模块
+
+##  2017年07月20 实现element-ui按需加载
+    ```
+        // 1，首先安装
+        babel-plugin-component；
+        // 2. 由于是webpack1.0版本 需要去掉 modules:fasle
+
+        //3 第三步 完成.babelrc书写
+        {
+          "presets": ["es2015", "stage-3"],
+          "plugins": ["transform-async-to-generator", "add-module-exports", "transform-runtime",["component", [
+            {
+              "libraryName": "element-ui",
+              "styleLibraryName": "theme-default"
+            }
+          ]]],
+          "comments": false
+        }
+
+
+    ```
+
+
+##  2017年07月21
+
+    1. 想实现mintUI像elementUI一样 在 .babelrc中按需加载但是没有成功。
+        #### 分析可能原因如下
+          webpack 版本过低，应使用webpack 2.0 已上
+
+    2. 按照交互稿书写首页
     
+## 2017年07月23
+
+   利用vuex在vue中实现mailPage页面的书写，主要利用 vuex两大特性
+
+    ```
+       computed:{
+          ...mapState({
+             // tableData:state=>state.products.tableData
+          })
+       }
+        methods:{
+            ...mapActions([
+                'getMailList'
+            ]),
+            ....
+        }
+
+        //改变vuex项目目录结构，把获取页面请求转移到actions里面；
+    ```
+
 
